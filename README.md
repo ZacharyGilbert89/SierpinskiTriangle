@@ -40,5 +40,5 @@ Example:
 ```
 ## Screenshots
 
-![My Remote Image](https://www.dropbox.com/s/onkndhaju029luf/screenshot.PNG?dl=0)
+![My Image](screenshot.png)
 
