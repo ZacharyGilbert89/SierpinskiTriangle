@@ -40,5 +40,5 @@ Example:
 ```
 ## Screenshots
 
-![My Image](screenshot.png)
+![](images/screenshot.jpg)
 
