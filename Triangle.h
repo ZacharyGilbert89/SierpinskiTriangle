@@ -8,11 +8,11 @@
 #include <SFML/Graphics.hpp>
 class Triangle : public sf::Drawable {
  public:
-    Triangle();
-    std::vector<sf::ConvexShape> Tree;
-    std::vector<sf::Vector2f> positions;
-    virtual ~Triangle();
-    sf::ConvexShape triangle;
+    Triangle(); //default constructor
+    std::vector<sf::ConvexShape> Tree; //Creates a vector to hold all the triangles that way we can iterate through each triangle and display it
+    std::vector<sf::Vector2f> positions;//This holds the positions of all the triangles
+    virtual ~Triangle();//deconstructor
+    sf::ConvexShape triangle; //Creates a triangle
    void setIncrement(int i);
    int getIncrement();
  private:
