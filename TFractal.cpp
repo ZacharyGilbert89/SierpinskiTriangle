@@ -11,17 +11,17 @@ int main(int argc, char* argv[]) {
     sf::RectangleShape background;
     sf::RenderTexture finalImage;//Render Texture
     sf::Sprite backgroundSprite; //Background Sprite
-    background.setSize(sf::Vector2f(dispSize, dispSize));
+    background.setSize(sf::Vector2f(dispSize, dispSize)); //creates the canvas
     background.setPosition(0, 0);
     background.setFillColor(sf::Color::White);
-    int L = atof(argv[1]);
-    int N = atof(argv[2]);
+    int L = atof(argv[1]);  //takes in the starting length from the CLI
+    int N = atof(argv[2]); //takes in the depth of the sierpinski triangle
     Triangle branch;
     branch.Tree.push_back(createTriangle(dispSize/2, dispSize/2, L)); // Base triangle
     finalImage.create(dispSize, dispSize);
     finalImage.clear(sf::Color::White);
 
-    fTree(&branch, L, 0, N);
+    fTree(&branch, L, 0, N); //here we start the calculations of each triangle
 
     std::cout << branch.Tree.size() << std::endl;
     for (int i = 0; i < branch.Tree.size(); ++i) {
@@ -42,19 +42,19 @@ int main(int argc, char* argv[]) {
     }
     return 0;
 }
-void fTree(Triangle* triangle, int len, int count, int times) {
+void fTree(Triangle* triangle, int len, int count, int times) { //Recursion function to draw each triangle
     double tempx;
     double tempy;
     int inc;
-    double height = sqrt((len/2.0 * len/2.0) - ((len/2.0)/2.0 * (len/2.0)/2.0));
+    double height = sqrt((len/2.0 * len/2.0) - ((len/2.0)/2.0 * (len/2.0)/2.0)); //calculates the height of the triangle
     if (times == 0) {
         return;
     } else {
-    tempx = abs(triangle->Tree[count].getPoint(0).x)-
+    tempx = abs(triangle->Tree[count].getPoint(0).x)-     //calculates the starting position for the triangle
         triangle->Tree[count].getPosition().x;
     tempy = abs(triangle->Tree[count].getPoint(0).y)-
         triangle->Tree[count].getPosition().y+height/2.0;
-    triangle->Tree.push_back(createTriangle(-tempx, -tempy, len/2.0)); //Left triangle
+    triangle->Tree.push_back(createTriangle(-tempx, -tempy, len/2.0)); //Draws the triangle based off the calculate starting points
 
     tempx = triangle->Tree[count].getPosition().x-
         abs(triangle->Tree[count].getPoint(1).x)+len+len/4.0;
@@ -72,7 +72,7 @@ void fTree(Triangle* triangle, int len, int count, int times) {
     triangle->Tree.push_back(createTriangle(tempx, tempy, len/2.0)); //Bottom Triangle
     count++;
     inc = triangle->getIncrement();
-    if (count == inc) { //This if statement is used to help draw out the triangles in the right order
+    if (count == inc) { //This if statement is used to help draw out the triangles in the right order, since we have a different number of triangles per depth level
         len *= .5;
         inc = (triangle->getIncrement() * 3) + 1;
         triangle->setIncrement(inc);
