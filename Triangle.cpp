@@ -17,12 +17,12 @@ sf::ConvexShape createTriangle(double x, double y, double length) { //Helper fun
     double height = sqrt((tl * tl) - (tl/2.0 * tl/2.0)); // Calculates the height using the hypotenuse
     double gx = tl;
     double gy = height;
-    temp.setPointCount(3);
+    temp.setPointCount(3); // 3 vertices to make a triangle
     temp.setOutlineThickness(2);
     temp.setOutlineColor(sf::Color::Black);
-    temp.setPoint(0, sf::Vector2f(-gx, -gy));
-    temp.setPoint(1, sf::Vector2f(gx, -gy));
-    temp.setPoint(2, sf::Vector2f(0, gy));
+    temp.setPoint(0, sf::Vector2f(-gx, -gy)); //sets the first point 
+    temp.setPoint(1, sf::Vector2f(gx, -gy));//sets the second point 
+    temp.setPoint(2, sf::Vector2f(0, gy));//sets the third point 
     return temp;
 }
 void Triangle::setIncrement(int i) { //Setter function
